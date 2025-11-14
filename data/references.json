@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Eiffel Tower",
+    "image": "data/images/eiffel.jpg",
+    "lat": 48.858370,
+    "lon": 2.294481
+  },
+  {
+    "name": "Colosseum",
+    "image": "data/images/colosseum.jpg",
+    "lat": 41.890251,
+    "lon": 12.492373
+  },
+  {
+    "name": "Notre-Dame de Paris",
+    "image": "data/images/notre_dame.jpg",
+    "lat": 48.852968,
+    "lon": 2.349902
+  }
+]

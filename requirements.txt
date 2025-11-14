@@ -1,0 +1,10 @@
+opencv-python
+numpy
+requests
+sentence-transformers
+torch
+transformers
+overpy
+Pillow
+wikipedia
+open_clip_torch
