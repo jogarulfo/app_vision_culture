@@ -55,7 +55,6 @@ class ClipModel:
             else:
                 pil = it.convert("RGB")
             pil_list.append(pil)
-
         if self.backend == "open_clip":
             import torch
             import open_clip

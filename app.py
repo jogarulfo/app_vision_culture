@@ -16,7 +16,7 @@ from vision.match_engine import MatchEngine
 
 
 
-def main(src,gps,radius_km=1,max_pois=100,sim_threshold=0.25,sample_fps=150):
+def main(src,gps,radius_km=1,max_pois=100,sim_threshold=0.5,sample_fps=500):
     # get mock or device GPS (mock by default)
 
     print("Retrieving POIs near", gps)
@@ -24,7 +24,7 @@ def main(src,gps,radius_km=1,max_pois=100,sim_threshold=0.25,sample_fps=150):
     print(f"Found {len(pois)} POIs (using radius {radius_km} km)")
 
     # prepare match engine
-    engine = MatchEngine(device="cpu", alpha=0.7, beta=0.3, max_radius_km=radius_km)
+    engine = MatchEngine(device="cpu", alpha=0.9, max_radius_km=radius_km)
     image_cache = os.path.join(os.path.dirname(__file__), "data", "references")
     engine.prepare_references(pois)
 
@@ -37,7 +37,7 @@ def main(src,gps,radius_km=1,max_pois=100,sim_threshold=0.25,sample_fps=150):
             counter += 1
             if counter % sample_every == 0:
                 match = engine.match_frame(frame)
-                print("Match:", match)
+                print(f"Match: {match}")
                 if match and match.get("similarity", 0) >= sim_threshold:
                     info = fetch_info(match["poi"]["name"])
                     display_text = f"{info.get('name')} - {info.get('description')[:200]}"
@@ -60,4 +60,4 @@ def main(src,gps,radius_km=1,max_pois=100,sim_threshold=0.25,sample_fps=150):
 
 
 if __name__ == "__main__":
-    main('data/video_chateau.mp4',(44.5224748549752, 1.939803529080694))
+    main('data/video_chateau.mp4',(44.5216141, 1.9397062),max_pois=50)
